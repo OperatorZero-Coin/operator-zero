@@ -106,11 +106,11 @@ strNetworkID = "operatorzero";
 
 ## 👥 Community
 
+- 🐦 **Twitter:** [@OP0Crypto](https://twitter.com/OP0Crypto)
+- 📱 **Telegram:** [t.me/OP0Coin](https://t.me/OP0Coin)
+- 💬 **Discord:** [Coming Soon]
 - 🌐 **Website:** [Coming Soon]
-- 💬 **Discord:** [Coming Soon]  
-- 📱 **Telegram:** [Coming Soon]
-- 🐦 **Twitter:** [Coming Soon]
-- 📖 **Whitepaper:** [docs/WHITEPAPER.md](docs/WHITEPAPER.md)
+- 📖 **Documentation:** [docs/](docs/)
 
 ---
 
