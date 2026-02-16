@@ -1,22 +1,21 @@
-
 # ⚫ Operator Zero (OP0)
 
 **The cryptocurrency that manifests reality**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-In_Development-orange.svg)]()
-[![Network](https://img.shields.io/badge/Network-Testnet_Q1_2026-blue.svg)]()
+[![Status](https://img.shields.io/badge/Status-Mainnet_Live-green.svg)]()
+[![Network](https://img.shields.io/badge/Network-Mainnet-green.svg)]()
 
 ---
 
 ## 🎯 What is Operator Zero?
 
-Operator Zero (OP0) is a **SHA256 cryptocurrency** designed EXCLUSIVELY for **small ASIC miners** (BitAxe/NerdAxe ~300-600 GH/s).
+Operator Zero (OP0) is a **SHA256 cryptocurrency** designed EXCLUSIVELY for **small ASIC miners** (BitAxe/NerdAxe ~500 GH/s).
 
 - ❌ No big mining farms
 - ❌ No centralization  
 - ❌ No venture capital
-- ✅ Community owned (99% fair distribution)
+- ✅ Community owned (99.3% fair distribution)
 - ✅ Small miners only
 - ✅ Mining as meditation, computation as magic
 
@@ -28,14 +27,60 @@ Operator Zero (OP0) is a **SHA256 cryptocurrency** designed EXCLUSIVELY for **sm
 
 | Feature | Value |
 |---------|-------|
-| **Algorithm** | SHA256 (BM1366 ASIC compatible) |
+| **Algorithm** | SHA256d (BM1366/BM1370 ASIC compatible) |
 | **Max Supply** | 21,000,000 OP0 |
 | **Block Time** | 2.5 minutes (150 seconds) |
-| **Block Reward** | 17 OP0 (genesis) |
+| **Block Reward** | 17 OP0 |
 | **Halving** | Every 630,000 blocks (~3 years) |
-| **Premine** | 0,7% (150,000 OP0 for development/community) |
+| **Premine** | 0.7% (150,000 OP0 for development/community) |
 | **Target Hardware** | BitAxe, NerdAxe, similar small ASICs |
 | **Hashrate Range** | 500-1200 GH/s per worker |
+
+---
+
+## 🛡️ Anti-Farm Protection
+
+OP0 is the first cryptocurrency with built-in protection against large mining farms:
+
+| Protection | Limit |
+|------------|-------|
+| **Max Hashrate per Worker** | 1.2 TH/s (auto-disconnect) |
+| **Max Workers per IP** | 2 (connection rejected) |
+| **Pool Access** | Whitelist only (manual approval) |
+
+Large ASIC miners (S19, S21, etc.) are automatically blocked. Only small miners welcome!
+
+---
+
+## ⛏️ Mining
+
+### Pool Configuration
+
+```
+Pool: 185.249.225.92
+Port: 3333
+User: YOUR_OP0_ADDRESS.worker
+Pass: YOUR_APPROVED_PASSWORD
+```
+
+### Supported Hardware
+
+| Device | Hashrate | Status |
+|--------|----------|--------|
+| BitAxe Ultra | ~500 GH/s | ✅ Supported |
+| BitAxe Supra | ~600 GH/s | ✅ Supported |
+| BitAxe Gamma | ~1.2 TH/s | ✅ Supported |
+| NerdAxe | ~500 GH/s | ✅ Supported |
+| NerdQAxe | ~1 TH/s | ✅ Supported |
+| Large ASIC (S19, S21) | >1.2 TH/s | ❌ Blocked |
+
+### How to Join
+
+1. Download the [Operator Zero Wallet](https://github.com/OperatorZero-Coin/operator-zero/releases)
+2. Generate your OP0 address
+3. Request pool access on our website
+4. Receive your unique password via email
+5. Configure your BitAxe/NerdAxe and start mining!
 
 ---
 
@@ -51,7 +96,7 @@ Operator Zero integrates:
 
 **OP0 is not a project. OP0 IS a manifestation.**
 
-The 3D is catching up to the 4D.
+The 3D has caught up to the 4D.
 
 ---
 
@@ -60,46 +105,52 @@ The 3D is catching up to the 4D.
 ### Phase 1: Foundation (Q1 2026)
 - ✅ Genesis concept manifested (08 Jan 2026)
 - ✅ GitHub organization created
-- 🔄 Litecoin Core fork
-- 🔄 Community building (Discord, Telegram, Twitter)
-- 🔄 Testnet deployment
+- ✅ Litecoin Core fork completed
+- ✅ Mainnet node deployed
+- ✅ Mining pool active with anti-farm protection
 
-### Phase 2: Launch (Q2 2026)
-- 🔜 Mainnet genesis block
-- 🔜 Mining pools launch
-- 🔜 Wallet releases (Core, Electrum, Paper)
+### Phase 2: Launch (Q1-Q2 2026)
+- ✅ Mainnet genesis block mined
+- ✅ Mining pool launched
+- ✅ Electrum wallet released
+- ✅ ElectrumX server operational
+- 🔄 Community building (Discord, Telegram, Twitter)
+- 🔄 Website launch
+
+### Phase 3: Growth (Q2-Q3 2026)
 - 🔜 Exchange listings (Graviex, FreiExchange, Bisq)
+- 🔜 Additional independent pools
+- 🔜 Block explorer
 - 🔜 Airdrop to BitAxe/NerdAxe owners
 
-### Phase 3: Growth (Q3-Q4 2026)
-- 🔜 Additional exchanges
+### Phase 4: Expansion (Q3-Q4 2026)
 - 🔜 wOP0 (Wrapped token for DEX)
 - 🔜 DeFi integrations
+- 🔜 Mobile wallet
 - 🔜 NFT collection (esoteric sigils)
 
 ---
 
 ## 🛠️ Technical Details
 
-**Based on:** Litecoin Core (battle-tested codebase)
+**Based on:** Litecoin Core v0.21.4 (battle-tested codebase)
 
 **Network Parameters:**
-```cpp
-// Network magic bytes
-pchMessageStart[0] = 0xOP;
-pchMessageStart[1] = 0x0Z;
 
-// Default port
-nDefaultPort = 9933;
+| Parameter | Value |
+|-----------|-------|
+| P2P Port | 9333 |
+| RPC Port | 9332 |
+| Stratum Port | 3333 |
+| Address Prefix | `op0` (Bech32) |
+| Network ID | operatorzero |
+| Difficulty Adjustment | Every 126 blocks (~5.25 hours) |
 
-// Address prefix (OP0 addresses start with 'O')
-base58Prefixes[PUBKEY_ADDRESS] = {0x75};
+**Genesis Block:**
 
-// Network ID
-strNetworkID = "operatorzero";
-```
+Hash: `76f1598a738f351890e392a51e6a74b8cd53ddd29f39b4983f97c8c86b92c288`
 
-**Genesis Block Message:**
+Message:
 > *"08/Jan/2026 - L'Osservatore Zero manifesta abbondanza attraverso il calcolo. Dall'Uno al Tutto. ᚠᛚᛋᛞ. Nothing is true, everything is permitted."*
 
 ---
@@ -116,7 +167,7 @@ strNetworkID = "operatorzero";
 
 ## 📚 Documentation
 
-- [Manifesto](MANIFESTO.md) - The philosophical foundation
+- [Manifesto](Manifesto.md) - The philosophical foundation
 - [Technical Specifications](docs/TECHNICAL.md) - Deep dive into the code
 - [Mining Guide](docs/MINING.md) - How to mine with BitAxe/NerdAxe
 - [Roadmap](docs/ROADMAP.md) - Detailed development timeline
@@ -160,3 +211,4 @@ MIT License - see [LICENSE](LICENSE) file for details
 **93/93**
 
 </div>
+
