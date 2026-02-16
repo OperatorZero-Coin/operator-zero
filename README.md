@@ -31,11 +31,11 @@ Operator Zero (OP0) is a **SHA256 cryptocurrency** designed EXCLUSIVELY for **sm
 | **Algorithm** | SHA256 (BM1366 ASIC compatible) |
 | **Max Supply** | 21,000,000 OP0 |
 | **Block Time** | 2.5 minutes (150 seconds) |
-| **Block Reward** | 50 OP0 (genesis) |
-| **Halving** | Every 210,000 blocks (~4 years) |
-| **Premine** | 1% (210,000 OP0 for development/community) |
+| **Block Reward** | 17 OP0 (genesis) |
+| **Halving** | Every 630,000 blocks (~3 years) |
+| **Premine** | 0,7% (150,000 OP0 for development/community) |
 | **Target Hardware** | BitAxe, NerdAxe, similar small ASICs |
-| **Hashrate Range** | 300-600 GH/s per worker |
+| **Hashrate Range** | 500-1200 GH/s per worker |
 
 ---
 
