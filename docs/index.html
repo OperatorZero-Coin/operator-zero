@@ -631,11 +631,59 @@
                     Requests from large mining farms will be rejected.</p>
                 </div>
 
-                <div style="text-align: center; padding: 2rem 0;">
-                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Click the button below to fill out the access request form. You'll receive your unique pool password via email within 24-48 hours.</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSckjgTTr6JzjO-eCMe5w6266-RTEPjTMBIJrdgOazlge9d8yw/viewform" target="_blank" class="btn btn-primary submit-btn" style="display: inline-block; padding: 1.2rem 3rem; font-size: 1.1rem;">
-                        📝 Request Pool Access
-                    </a>
+                <!-- Replace YOUR_FORM_ID with your Formspree form ID after registration -->
+                <form id="pool-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        <small>We'll send your pool password here</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="miner-model">Miner Model *</label>
+                        <select id="miner-model" name="miner_model" required>
+                            <option value="">Select your miner...</option>
+                            <option value="BitAxe Ultra">BitAxe Ultra (~500 GH/s)</option>
+                            <option value="BitAxe Hex">BitAxe Hex (~3 TH/s - requires approval)</option>
+                            <option value="BitAxe Supra">BitAxe Supra (~600 GH/s)</option>
+                            <option value="NerdAxe">NerdAxe (~500 GH/s)</option>
+                            <option value="NerdQAxe">NerdQAxe (~1 TH/s)</option>
+                            <option value="Bitaxe Gamma">Bitaxe Gamma (~1.2 TH/s)</option>
+                            <option value="Other">Other (specify below)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hashrate">Approximate Hashrate *</label>
+                        <input type="text" id="hashrate" name="hashrate" required placeholder="e.g., 500 GH/s">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="op0-address">OP0 Wallet Address *</label>
+                        <input type="text" id="op0-address" name="op0_address" required placeholder="op01q...">
+                        <small>Your OP0 address for mining payouts</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mac-address">MAC Address (optional)</label>
+                        <input type="text" id="mac-address" name="mac_address" placeholder="AA:BB:CC:DD:EE:FF">
+                        <small>Found in your miner's network settings. Helps verify device authenticity.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (optional)</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any additional information..."></textarea>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="🆕 New OP0 Pool Access Request">
+
+                    <button type="submit" class="btn btn-primary submit-btn">Submit Request</button>
+                </form>
+
+                <div id="form-success" class="form-success">
+                    <h3>✓ Request Submitted!</h3>
+                    <p>Thank you for your interest in OP0. We'll review your request and send your pool password within 24-48 hours.</p>
+                    <p style="margin-top: 1rem;">In the meantime, download the wallet and generate your OP0 address if you haven't already.</p>
                 </div>
 
                 <div class="pool-info">
@@ -647,10 +695,6 @@
                         <p><strong>Username:</strong> <span>YOUR_OP0_ADDRESS.worker</span></p>
                         <p><strong>Password:</strong> <span>YOUR_UNIQUE_PASSWORD</span></p>
                     </div>
-                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="http://185.249.225.92:3002" target="_blank" class="btn btn-secondary">🔍 Block Explorer</a>
-                        <a href="http://185.249.225.92:3334/api/info" target="_blank" class="btn btn-secondary">📊 Pool Stats API</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -658,7 +702,6 @@
 
     <footer>
         <div class="footer-runes">ᚠᛚᛋᛞ</div>
-        <p style="font-size: 1.2rem; font-style: italic; color: var(--primary); margin-bottom: 1rem;">"OP0 is not a project. OP0 IS a manifestation."</p>
         <div class="footer-links">
             <a href="https://github.com/OperatorZero-Coin/operator-zero" target="_blank">GitHub</a>
             <a href="https://twitter.com/OP0Crypto" target="_blank">Twitter</a>
@@ -669,6 +712,35 @@
     </footer>
 
     <script>
+        // Form submission handling
+        const form = document.getElementById('pool-form');
+        const successMsg = document.getElementById('form-success');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMsg.classList.add('show');
+                } else {
+                    alert('Error submitting form. Please try again.');
+                }
+            } catch (error) {
+                alert('Error submitting form. Please try again.');
+            }
+        });
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
