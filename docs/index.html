@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Zero (OP0) - Mining for the People</title>
+    <meta name="description" content="OP0 - SHA256 cryptocurrency exclusively for small ASIC miners. BitAxe/NerdAxe compatible. No farms, no centralization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --primary-dark: #cc5500;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --border: #2a2a2a;
+            --success: #00ff88;
+            --error: #ff4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-runes {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1rem;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-motto {
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .specs-table td {
+            padding: 1rem;
+        }
+
+        .specs-table td:first-child {
+            color: var(--text-muted);
+        }
+
+        .specs-table td:last-child {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary);
+            text-align: right;
+        }
+
+        /* Download Section */
+        #download {
+            background: var(--bg-card);
+            border-radius: 24px;
+            margin: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .download-card:hover {
+            border-color: var(--primary);
+        }
+
+        .download-card h3 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .download-card .btn {
+            width: 100%;
+        }
+
+        /* Pool Access Form */
+        #pool-access {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, transparent 100%);
+            border-radius: 24px;
+            margin: 2rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .form-note {
+            background: rgba(255, 107, 0, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .form-note p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Pool Info */
+        .pool-info {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pool-info h3 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .pool-details {
+            font-family: monospace;
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .pool-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        .pool-details span {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .footer-runes {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            #download, #pool-access {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Success message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success h3 {
+            color: var(--success);
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-success p {
+            color: var(--text-muted);
+        }
+
+        form.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">⚫</div>
+            OP0
+        </a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#specs">Specs</a>
+            <a href="#download">Download</a>
+            <a href="#pool-access">Join Pool</a>
+            <a href="https://github.com/OperatorZero-Coin/operator-zero" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-runes">ᚠᛚᛋᛞ</div>
+            <h1>OPERATOR ZERO</h1>
+            <p class="hero-tagline">SHA256 cryptocurrency exclusively for small ASIC miners. No farms. No centralization.</p>
+            <p class="hero-motto">"Dall'Uno al Tutto" — From One to All</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary">Download Wallet</a>
+                <a href="#pool-access" class="btn btn-secondary">Request Pool Access</a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features">
+            <h2 class="section-title">Why OP0?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Anti-Farm Protection</h3>
+                    <p>Maximum 1.2 TH/s per miner. Maximum 2 workers per IP. Big ASIC farms automatically rejected.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>BitAxe Compatible</h3>
+                    <p>Designed for BitAxe, NerdAxe, and similar small SHA256 ASIC miners (~500 GH/s).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔮</div>
+                    <h3>Fair Distribution</h3>
+                    <p>99% community mining, 1% development fund. No VC, no premine dump.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Decentralized</h3>
+                    <p>Whitelist-based pool access ensures only real small miners participate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <h3>Mining as Meditation</h3>
+                    <p>Computation as magic. Every hash is an intention manifested into reality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Scarce Supply</h3>
+                    <p>21 million OP0 maximum. Halving every ~3 years. Sound money for small miners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specs -->
+        <section id="specs">
+            <h2 class="section-title">Specifications</h2>
+            <table class="specs-table">
+                <tr>
+                    <td>Algorithm</td>
+                    <td>SHA256d</td>
+                </tr>
+                <tr>
+                    <td>Max Supply</td>
+                    <td>21,000,000 OP0</td>
+                </tr>
+                <tr>
+                    <td>Block Time</td>
+                    <td>2.5 minutes</td>
+                </tr>
+                <tr>
+                    <td>Block Reward</td>
+                    <td>17 OP0</td>
+                </tr>
+                <tr>
+                    <td>Halving Interval</td>
+                    <td>630,000 blocks (~3 years)</td>
+                </tr>
+                <tr>
+                    <td>Premine</td>
+                    <td>150,000 OP0 (0.7%)</td>
+                </tr>
+                <tr>
+                    <td>Max Hashrate/Worker</td>
+                    <td>1.2 TH/s</td>
+                </tr>
+                <tr>
+                    <td>Target Hardware</td>
+                    <td>BitAxe, NerdAxe</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Download -->
+        <section id="download">
+            <h2 class="section-title">Download</h2>
+            <div class="download-cards">
+                <div class="download-card">
+                    <h3>🖥️ Windows</h3>
+                    <p>Operator Zero Wallet for Windows 10/11 (64-bit)</p>
+                    <a href="https://github.com/OperatorZero-Coin/operator-zero/releases/latest" class="btn btn-primary" target="_blank">Download .exe</a>
+                </div>
+                <div class="download-card">
+                    <h3>🐧 Linux</h3>
+                    <p>AppImage for Ubuntu, Debian, Fedora and other distros</p>
+                    <a href="https://github.com/OperatorZero-Coin/operator-zero/releases/latest" class="btn btn-primary" target="_blank">Download .AppImage</a>
+                </div>
+                <div class="download-card">
+                    <h3>🍎 macOS</h3>
+                    <p>Coming soon for macOS 12+</p>
+                    <span class="btn btn-secondary" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pool Access Form -->
+        <section id="pool-access">
+            <h2 class="section-title">Request Pool Access</h2>
+            <div class="form-container">
+                <p class="form-intro">
+                    OP0 Pool uses a whitelist system to ensure only legitimate small miners can participate. 
+                    Fill out the form below and we'll send you your unique pool password.
+                </p>
+
+                <div class="form-note">
+                    <p>⚠️ <strong>Important:</strong> Only BitAxe, NerdAxe, and similar small ASIC miners (&lt;1.2 TH/s) are allowed. 
+                    Requests from large mining farms will be rejected.</p>
+                </div>
+
+                <div style="text-align: center; padding: 2rem 0;">
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Click the button below to fill out the access request form. You'll receive your unique pool password via email within 24-48 hours.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSckjgTTr6JzjO-eCMe5w6266-RTEPjTMBIJrdgOazlge9d8yw/viewform" target="_blank" class="btn btn-primary submit-btn" style="display: inline-block; padding: 1.2rem 3rem; font-size: 1.1rem;">
+                        📝 Request Pool Access
+                    </a>
+                </div>
+
+                <div class="pool-info">
+                    <h3>Pool Configuration</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Once approved, configure your miner with:</p>
+                    <div class="pool-details">
+                        <p><strong>Pool URL:</strong> <span>185.249.225.92</span></p>
+                        <p><strong>Port:</strong> <span>3333</span></p>
+                        <p><strong>Username:</strong> <span>YOUR_OP0_ADDRESS.worker</span></p>
+                        <p><strong>Password:</strong> <span>YOUR_UNIQUE_PASSWORD</span></p>
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="http://185.249.225.92:3002" target="_blank" class="btn btn-secondary">🔍 Block Explorer</a>
+                        <a href="http://185.249.225.92:3334/api/info" target="_blank" class="btn btn-secondary">📊 Pool Stats API</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-runes">ᚠᛚᛋᛞ</div>
+        <p style="font-size: 1.2rem; font-style: italic; color: var(--primary); margin-bottom: 1rem;">"OP0 is not a project. OP0 IS a manifestation."</p>
+        <div class="footer-links">
+            <a href="https://github.com/OperatorZero-Coin/operator-zero" target="_blank">GitHub</a>
+            <a href="https://twitter.com/OP0Crypto" target="_blank">Twitter</a>
+            <a href="https://t.me/OP0Coin" target="_blank">Telegram</a>
+        </div>
+        <p>93/93 — Nothing is true, everything is permitted</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 Operator Zero. MIT License.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
