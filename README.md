@@ -142,13 +142,13 @@ The 3D has caught up to the 4D.
 | P2P Port | 9333 |
 | RPC Port | 9332 |
 | Stratum Port | 3333 |
-| Address Prefix | `op0` (Bech32) |
+| Address Prefix | op01q` (Bech32) |
 | Network ID | operatorzero |
 | Difficulty Adjustment | Every 72 blocks (~3 hours) |
 
 **Genesis Block:**
 
-Hash: `76f1598a738f351890e392a51e6a74b8cd53ddd29f39b4983f97c8c86b92c288`
+Hash: `60cf1f613e5b59c5b72089a6a5bc5df439f43d85a60c738dc916772b00d956c6`
 
 Message:
 > *"08/Jan/2026 - L'Osservatore Zero manifesta abbondanza attraverso il calcolo. Dall'Uno al Tutto. ᚠᛚᛋᛞ. Nothing is true, everything is permitted."*
