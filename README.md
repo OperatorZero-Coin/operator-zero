@@ -160,7 +160,7 @@ Message:
 - 🐦 **Twitter:** [@OP0Crypto](https://twitter.com/OP0Crypto)
 - 📱 **Telegram:** [t.me/OP0Coin](https://t.me/OP0Coin)
 - 💬 **Discord:** [Coming Soon]
-- 🌐 **Website:** [Coming Soon]
+- 🌐 **Website:** (https://operatorzero-coin.github.io/operator-zero/)
 - 📖 **Documentation:** [docs/](docs/)
 
 ---
