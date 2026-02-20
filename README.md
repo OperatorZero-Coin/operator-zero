@@ -144,7 +144,7 @@ The 3D has caught up to the 4D.
 | Stratum Port | 3333 |
 | Address Prefix | `op0` (Bech32) |
 | Network ID | operatorzero |
-| Difficulty Adjustment | Every 126 blocks (~5.25 hours) |
+| Difficulty Adjustment | Every 72 blocks (~3 hours) |
 
 **Genesis Block:**
 
