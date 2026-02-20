@@ -153,6 +153,25 @@ Hash: `60cf1f613e5b59c5b72089a6a5bc5df439f43d85a60c738dc916772b00d956c6`
 Message:
 > *"08/Jan/2026 - L'Osservatore Zero manifesta abbondanza attraverso il calcolo. Dall'Uno al Tutto. ᚠᛚᛋᛞ. Nothing is true, everything is permitted."*
 
+## 📥 Download & Setup
+
+**Download the wallet:** [GitHub Releases](https://github.com/operatorzero-coin/operator-zero/releases)
+
+### 🔧 Manual Server Configuration
+
+If the wallet doesn't connect automatically, configure the server manually:
+
+1. Open the wallet
+2. Go to **Tools** → **Network**
+3. Uncheck **"Select server automatically"**
+4. Enter server details:
+   - **Server:** `194.163.147.88`
+   - **Port:** `50001`
+   - **Protocol:** `t` (TCP)
+5. Click **Close**
+6. The wallet should now connect and sync
+
+**Full server string:** `194.163.147.88:50001:t`
 ---
 
 ## 👥 Community
